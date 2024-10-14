@@ -32,7 +32,7 @@ public class Reponse {
         if(resultat.size()==motSecret.length()){
             int i=0;
             while (i<resultat.size() && toutesPlacees){
-                if(!resultat.get(i).equals(Lettre.PLACEE)){
+                if(!resultat.get(i).equals(Lettre.BIEN_PLACEE)){
                     toutesPlacees=false;
                 }
                 else{
@@ -55,13 +55,13 @@ public class Reponse {
     private Lettre evaluationCaractere(char carCourant) {
         Lettre res;
         if(estBienPlace((carCourant))){
-            res=Lettre.PLACEE;
+            res=Lettre.BIEN_PLACEE;
         }
         else if (estPresent(carCourant)) {
             res=Lettre.NON_PLACEE;
         }
         else{
-            res=Lettre.INCORRECTE;
+            res=Lettre.INEXISTANTE;
         }
         return res;
     }

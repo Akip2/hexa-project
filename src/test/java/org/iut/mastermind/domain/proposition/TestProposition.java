@@ -13,7 +13,7 @@ public class TestProposition {
     public void casLettreIncorrecte() {
         var mot = new MotSecret("S");
         var reponse = mot.compareProposition("Z");
-        assertResultat(reponse, INCORRECTE);
+        assertResultat(reponse, INEXISTANTE);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class TestProposition {
     public void casLettrePlacee() {
         var mot = new MotSecret("S");
         var reponse = mot.compareProposition("S");
-        assertResultat(reponse, PLACEE);
+        assertResultat(reponse, BIEN_PLACEE);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TestProposition {
     public void casDeuxiemeLettreMalPlacee() {
         var mot = new MotSecret("SO");
         var reponse = mot.compareProposition("ZS");
-        assertResultat(reponse,  INCORRECTE, NON_PLACEE);
+        assertResultat(reponse, INEXISTANTE, NON_PLACEE);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestProposition {
     public void casCombinaisons() {
         var mot = new MotSecret("SOL");
         var reponse = mot.compareProposition("ZSL");
-        assertResultat(reponse,  INCORRECTE, NON_PLACEE, PLACEE);
+        assertResultat(reponse, INEXISTANTE, NON_PLACEE, BIEN_PLACEE);
     }
 
     @Test
