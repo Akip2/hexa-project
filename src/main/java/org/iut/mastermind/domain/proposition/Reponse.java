@@ -54,7 +54,7 @@ public class Reponse {
     // renvoie le statut du caractère
     private Lettre evaluationCaractere(char carCourant) {
         Lettre res;
-        if(estPlace((carCourant))){
+        if(estBienPlace((carCourant))){
             res=Lettre.PLACEE;
         }
         else if (estPresent(carCourant)) {
@@ -72,7 +72,7 @@ public class Reponse {
     }
 
     // le caractère est placé dans le mot secret
-    private boolean estPlace(char carCourant) {
+    private boolean estBienPlace(char carCourant) {
         return motSecret.charAt(position)==carCourant;
     }
 }
