@@ -37,7 +37,7 @@ public class Mastermind {
 
         if(!enCours){
             String motSecret=serviceTirageMot.tirageMotAleatoire();
-            Partie partie=new Partie(joueur, motSecret, 0, false);
+            Partie partie=new Partie(joueur, motSecret, 0);
 
             partieRepository.create(partie);
         }

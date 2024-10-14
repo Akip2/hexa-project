@@ -10,19 +10,19 @@ public class Partie {
     private int nbEssais;
     private boolean partieTerminee;
 
-    public Partie(Joueur joueur, String motADeviner, int nbEssais, boolean partieTerminee) {
+    public Partie(Joueur joueur, String motADeviner, int nbEssais) {
         this.joueur = joueur;
         this.motADeviner = motADeviner;
         this.nbEssais = nbEssais;
-        this.partieTerminee = partieTerminee;
+        this.partieTerminee = false;
     }
 
     public static Partie create(Joueur joueur, String motADeviner) {
-        return new Partie(joueur, motADeviner, 0, false);
+        return new Partie(joueur, motADeviner, 0);
     }
 
     public static Partie create(Joueur joueur, String motADeviner, int nbEssais) {
-        return new Partie(joueur, motADeviner, nbEssais, false);
+        return new Partie(joueur, motADeviner, nbEssais);
     }
 
     // getter joueur
@@ -52,7 +52,7 @@ public class Partie {
 
             Reponse reponse=motSecret.compareProposition(motPropose);
 
-            if(reponse.lettresToutesPlacees() || !verifieNbEssais()){
+            if(reponse.lettresToutesPlacees() || nbEssais>=NB_ESSAIS_MAX){
                 partieTerminee=true;
             }
 
@@ -61,11 +61,6 @@ public class Partie {
         else{
             return null;
         }
-    }
-
-    // vérifie que le nombre d'essais max n'est pas atteint
-    private boolean verifieNbEssais() {
-        return nbEssais<NB_ESSAIS_MAX;
     }
 
     // la partie est-elle terminée
