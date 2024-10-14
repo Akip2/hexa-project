@@ -54,7 +54,7 @@ public class Partie {
             Reponse reponse=motSecret.compareProposition(motPropose);
 
             if(reponse.lettresToutesPlacees()){
-                done();
+                partieTerminee=true;
             }else{
                 verifieNbEssais();
             }
@@ -69,7 +69,7 @@ public class Partie {
     // vérifie que le nombre d'essais max n'est pas atteint
     private void verifieNbEssais() {
         if(nbEssais>=NB_ESSAIS_MAX){
-            done();
+            partieTerminee=true;
         }
     }
 
@@ -77,9 +77,9 @@ public class Partie {
     public boolean isTerminee() {
         return partieTerminee;
     }
-
+    
     // la partie est terminée
-    void done() {
-        partieTerminee=true;
+    void terminerPartie() {
+        this.partieTerminee=true;
     }
 }
