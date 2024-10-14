@@ -45,18 +45,15 @@ public class Partie {
     // et on renvoie la réponse
     // si toutes les lettres sont correctement placées,
     // on a terminé la partie
-    public Reponse tourDeJeu(String motPropose) {
-        verifieNbEssais();
+    public Reponse tourDeJeu(String motPropose){
         if(!isTerminee()){
             nbEssais++;
             MotSecret motSecret=new MotSecret(motADeviner);
 
             Reponse reponse=motSecret.compareProposition(motPropose);
 
-            if(reponse.lettresToutesPlacees()){
+            if(reponse.lettresToutesPlacees() || !verifieNbEssais()){
                 partieTerminee=true;
-            }else{
-                verifieNbEssais();
             }
 
             return reponse;
@@ -67,10 +64,8 @@ public class Partie {
     }
 
     // vérifie que le nombre d'essais max n'est pas atteint
-    private void verifieNbEssais() {
-        if(nbEssais>=NB_ESSAIS_MAX){
-            partieTerminee=true;
-        }
+    private boolean verifieNbEssais() {
+        return nbEssais<NB_ESSAIS_MAX;
     }
 
     // la partie est-elle terminée
